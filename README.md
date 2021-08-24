@@ -9,6 +9,8 @@
     ...
     # LDAP support
     implementation "org.apereo.cas:cas-server-support-ldap:${project.'cas.version'}" 
+    # Services definitions in JSON files support
+    implementation "org.apereo.cas:cas-server-support-json-service-registry:${project.'cas.version'}"
     ...
   }
 ```
