@@ -9,8 +9,6 @@
     ...
     # LDAP support
     classpath "org.apereo.cas:cas-server-support-ldap:${project.'cas.version'}" 
-    # OAuth support
-    classpath "org.apereo.cas:cas-server-support-oauth-webflow:${project.'cas.version'}" 
     ...
   }
 ```
