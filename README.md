@@ -8,7 +8,7 @@
   dependencies { 
     ...
     # LDAP support
-    classpath "org.apereo.cas:cas-server-support-ldap:${project.'cas.version'}" 
+    implementation "org.apereo.cas:cas-server-support-ldap:${project.'cas.version'}" 
     ...
   }
 ```
