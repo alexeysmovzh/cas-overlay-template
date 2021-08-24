@@ -28,10 +28,12 @@ jobs:
           ${{ runner.os }}-gradle-
     - name: Build with Gradle
       run: ./gradlew clean build
+    - name: Rename artifact
+      run: mv build/libs/app.war build/libs/cas.war
     - uses: actions/upload-artifact@v2
       with:
         name: cas
-        path: build/libs
+        path: build/libs/cas.war
         retention-days: 7
     - name: Cleanup Gradle Cache
       run: |
