@@ -184,6 +184,11 @@
 
 # Owner: org.apereo.cas.configuration.model.support.aup.CouchbaseAcceptableUsagePolicyProperties
 # Type: java.lang.String
+# String representation of query threshold.
+# cas.acceptable-usage-policy.couchbase.query-threshold: PT30S
+
+# Owner: org.apereo.cas.configuration.model.support.aup.CouchbaseAcceptableUsagePolicyProperties
+# Type: java.lang.String
 # String representation of query timeout.
 # cas.acceptable-usage-policy.couchbase.query-timeout: PT30S
 
@@ -1028,7 +1033,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.acceptable-usage-policy.redis.read-from: 
+# cas.acceptable-usage-policy.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -1388,6 +1393,11 @@ Available values are as follows:
 # Type: java.lang.Integer
 # Maximum number of parallel threads made for queries.
 # cas.audit.couchbase.max-parallelism: 0
+
+# Owner: org.apereo.cas.configuration.model.core.audit.AuditCouchbaseProperties
+# Type: java.lang.String
+# String representation of query threshold.
+# cas.audit.couchbase.query-threshold: PT30S
 
 # Owner: org.apereo.cas.configuration.model.core.audit.AuditCouchbaseProperties
 # Type: java.lang.String
@@ -2093,7 +2103,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.audit.redis.read-from: 
+# cas.audit.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -2248,7 +2258,7 @@ Available values are as follows:
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option to handle policy changes.</li><li>{@code GROOVY}: Handle account password policies via Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password policy
 if the authentication response code is not blocked.</li></ul>
-# cas.authn.accept.password-policy.strategy: DEFAULT
+# cas.authn.accept.password-policy.strategy: 30
 
 # Owner: org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties
 # Type: java.lang.Boolean
@@ -2638,7 +2648,7 @@ Available values are as follows:
 Retains existing attribute values if any, and ignores values from subsequent sources in the resolution chain.</li><li>{@code NONE}: No merging.
 Doesn't merge attributes, ignores attributes from non-authentication attribute repositories.</li><li>{@code MULTIVALUED}: Multivalued attributes.
 Combines all values into a single attribute, essentially creating a multi-valued attribute.</li></ul>
-# cas.authn.attribute-repository.core.merger: REPLACE
+# cas.authn.attribute-repository.core.merger: MERGE
 
 # Owner: org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties
 # Type: java.lang.Boolean
@@ -2704,6 +2714,11 @@ Combines all values into a single attribute, essentially creating a multi-valued
 # Type: java.lang.Integer
 # The order of this attribute repository in the chain of repositories. Can be used to explicitly position this source in chain and affects merging strategies.
 # cas.authn.attribute-repository.couchbase.order: 0
+
+# Owner: org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties
+# Type: java.lang.String
+# String representation of query threshold.
+# cas.authn.attribute-repository.couchbase.query-threshold: PT30S
 
 # Owner: org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties
 # Type: java.lang.String
@@ -4809,6 +4824,11 @@ Available values are as follows:
 
 # Owner: org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbaseAuthenticationProperties
 # Type: java.lang.String
+# String representation of query threshold.
+# cas.authn.couchbase.query-threshold: PT30S
+
+# Owner: org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbaseAuthenticationProperties
+# Type: java.lang.String
 # String representation of query timeout.
 # cas.authn.couchbase.query-timeout: PT30S
 
@@ -5034,7 +5054,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.gua.ldap.hostname-verifier: DEFAULT
+# cas.authn.gua.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.gua.LdapGraphicalUserAuthenticationProperties
 # Type: java.lang.String
@@ -7045,7 +7065,7 @@ schema changes and updates, when needed.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option to handle policy changes.</li><li>{@code GROOVY}: Handle account password policies via Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password policy
 if the authentication response code is not blocked.</li></ul>
-# cas.authn.json.password-policy.strategy: DEFAULT
+# cas.authn.json.password-policy.strategy: 30
 
 # Owner: org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties
 # Type: java.lang.Boolean
@@ -8076,7 +8096,7 @@ Available values are as follows:
 # Defines the global failure mode for the entire deployment. This is meant to be used a shortcut to define the policy globally rather than per application. Applications registered with CAS can still define a failure mode and override the global.
 Available values are as follows:
 <ul><li>{@code OPEN}: Disallow MFA, proceed with authentication but don't communicate MFA to the RP.</li><li>{@code CLOSED}: Disallow MFA, block with authentication.</li><li>{@code PHANTOM}: Disallow MFA, proceed with authentication and communicate MFA to the RP.</li><li>{@code NONE}: Do not check for failure at all.</li><li>{@code UNDEFINED}: The default one indicating that no failure mode is set at all.</li></ul>
-# cas.authn.mfa.core.global-failure-mode: 
+# cas.authn.mfa.core.global-failure-mode: CLOSED
 
 # Owner: org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationCoreProperties
 # Type: java.lang.Boolean
@@ -8194,16 +8214,6 @@ Examples include {@code GET, POST}, etc.
 
 # Owner: org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties
 # Type: java.lang.String
-# Duo admin integration key.
-# cas.authn.mfa.duo[].duo-admin-integration-key: 
-
-# Owner: org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties
-# Type: java.lang.String
-# Duo admin secret key.
-# cas.authn.mfa.duo[].duo-admin-secret-key: 
-
-# Owner: org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties
-# Type: java.lang.String
 # Duo API host and url.
 # cas.authn.mfa.duo[].duo-api-host: 
 
@@ -8213,7 +8223,7 @@ Examples include {@code GET, POST}, etc.
 that you generate and keep secret from Duo.
 This is a required setting for the WebSDK integration types.
 Leaving this setting as blank will activate the Universal Prompt option.
-<p>
+
 You can generate a random string in Python with:
 &lt;pre&gt;
 import os, hashlib
@@ -8796,7 +8806,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.mfa.gauth.ldap.hostname-verifier: DEFAULT
+# cas.authn.mfa.gauth.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.mfa.gauth.LdapGoogleAuthenticatorMultifactorProperties
 # Type: java.lang.String
@@ -9369,7 +9379,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.gauth.redis.read-from: 
+# cas.authn.mfa.gauth.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -9725,14 +9735,6 @@ Available values are as follows:
 # Type: java.lang.Integer
 # Socket connection timeout in milliseconds.
 # cas.authn.mfa.radius.client.socket-timeout: 0
-
-# Owner: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties
-# Type: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties$RadiusClientTransportTypes
-# Transport type to use by this client to connect to the server.
-Available values are as follows:
-<ul><li>{@code UDP}: Default. UDP client transport type.</li><li>{@code RADSEC}: RadSec is a protocol which allows RADIUS servers to
-transfer data over TCP and TLS for increased security.</li></ul>
-# cas.authn.mfa.radius.client.transport-type: UDP
 
 # Owner: org.apereo.cas.configuration.model.support.mfa.RadiusMultifactorAuthenticationProperties
 # Type: java.lang.Boolean
@@ -11075,7 +11077,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.trusted.redis.read-from: 
+# cas.authn.mfa.trusted.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -12072,7 +12074,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.u2f.redis.read-from: 
+# cas.authn.mfa.u2f.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -12691,7 +12693,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.mfa.web-authn.ldap.hostname-verifier: DEFAULT
+# cas.authn.mfa.web-authn.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnLdapMultifactorProperties
 # Type: java.lang.String
@@ -13259,7 +13261,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.web-authn.redis.read-from: 
+# cas.authn.mfa.web-authn.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -14119,7 +14121,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.yubikey.redis.read-from: 
+# cas.authn.mfa.yubikey.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -14784,11 +14786,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Deprecation Replacement: cas.authn.oidc.core.claims-map
 
 # Owner: org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties
-# Type: java.util.List<java.lang.String>
-# A mapping of authentication context refs (ACR) values. This is where specific authentication context classes are referenced and mapped to providers that CAS may support mainly for MFA purposes. <p> Example might be {@code acr-value->mfa-duo}.
-# cas.authn.oidc.core.authentication-context-reference-mappings: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties
 # Type: java.util.Map<java.lang.String,java.lang.String>
 # Map fixed claims to CAS attributes. Key is the existing claim name for a scope and value is the new attribute that should take its place and value.
 # cas.authn.oidc.core.claims-map: 
@@ -14797,11 +14794,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Type: java.lang.String
 # Whether dynamic registration operates in {@code OPEN} or {@code PROTECTED} mode.
 # cas.authn.oidc.core.dynamic-client-registration-mode: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties
-# Type: java.lang.Boolean
-# As per OpenID Connect Core section 5.4, "The Claims requested by the {@code profile}, {@code email}, {@code address}, and {@code phone} scope values are returned from the userinfo endpoint", except for {@code response_type}={@code id_token}, where they are returned in the id_token (as there is no access token issued that could be used to access the userinfo endpoint). The Claims requested by the profile, email, address, and phone scope values are returned from the userinfo endpoint when a {@code response_type} value is used that results in an access token being issued. However, when no access token is issued (which is the case for the {@code response_type} value {@code id_token}), the resulting Claims are returned in the ID Token. <p> Setting this flag to true will force CAS to include claims in the ID token regardless of the response type. Note that this setting <strong>MUST ONLY</strong> be used as a last resort, to stay compliant with the specification as much as possible. <strong>DO NOT</strong> use this setting without due consideration. <p> Note that this setting is set to {@code true} by default mainly provided to preserve backward compatibility with previous CAS versions that included claims into the ID token without considering the response type. The behavior of this setting may change and it may be removed in future CAS releases.
-# cas.authn.oidc.core.include-id-token-claims: true
 
 # Owner: org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties
 # Type: java.lang.String
@@ -14820,16 +14812,6 @@ where all attributes are flattened down to one level only.</li></ul>
 
 # Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
 # Type: java.util.List<java.lang.String>
-# List of ACR values supported. This discovery element contains a list of the supported acr values supported by this server.
-# cas.authn.oidc.discovery.acr-values-supported: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.lang.Boolean
-# Parameter indicating whether the authorization server provides the {@code iss} parameter in the authorization response.
-# cas.authn.oidc.discovery.authorization-response-issuer-parameter-supported: false
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.util.List<java.lang.String>
 # Supported claim types.
 # cas.authn.oidc.discovery.claim-types-supported: 
 
@@ -14837,11 +14819,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Type: java.util.List<java.lang.String>
 # List of supported claims.
 # cas.authn.oidc.discovery.claims: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.lang.Boolean
-# Specifying whether this provider supports use of the claims parameter.
-# cas.authn.oidc.discovery.claims-parameter-supported: true
 
 # Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
 # Type: java.util.List<java.lang.String>
@@ -14872,31 +14849,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Type: java.util.List<java.lang.String>
 # Supported authentication methods for introspection.
 # cas.authn.oidc.discovery.introspection-supported-authentication-methods: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.util.List<java.lang.String>
-# Supported algorithms for request object encryption.
-# cas.authn.oidc.discovery.request-object-encryption-alg-values-supported: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.util.List<java.lang.String>
-# Supported encoding strategies for request object encryption.
-# cas.authn.oidc.discovery.request-object-encryption-encoding-values-supported: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.util.List<java.lang.String>
-# Supported algorithms for request object signing.
-# cas.authn.oidc.discovery.request-object-signing-alg-values-supported: 
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.lang.Boolean
-# Specifying whether this provider supports use of the {@code request} parameter.
-# cas.authn.oidc.discovery.request-parameter-supported: true
-
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Type: java.lang.Boolean
-# Specifying whether this provider supports use of the {@code request_uri} parameter.
-# cas.authn.oidc.discovery.request-uri-parameter-supported: true
 
 # Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
 # Type: java.util.List<java.lang.String>
@@ -15405,11 +15357,6 @@ Acceptable values are {@code CAS10, CAS20, CAS20_PROXY, CAS30, CAS30_PROXY, SAML
 # Type: java.lang.Boolean
 # True if sending this cookie should be restricted to a secure protocol, or false if the it can be sent using any protocol.
 # cas.authn.pac4j.cookie.secure: true
-
-# Owner: org.apereo.cas.configuration.model.SpringResourceProperties
-# Type: org.springframework.core.io.Resource
-# The location of the resource. Resources can be URLS, or files found either on the classpath or outside somewhere in the file system.
-# cas.authn.pac4j.core.groovy-redirection-strategy.location: 
 
 # Owner: org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationCoreProperties
 # Type: java.lang.Boolean
@@ -17884,7 +17831,7 @@ Validation is considered successful if the search result size is greater than ze
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.passwordless.accounts.ldap.hostname-verifier: DEFAULT
+# cas.authn.passwordless.accounts.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.passwordless.account.PasswordlessAuthenticationLdapAccountsProperties
 # Type: java.lang.String
@@ -18663,7 +18610,7 @@ attribute and merges those results into the original entry.</li></ul>
 # Indicate the version of the recaptcha api. Accepted values are: {@code V2, V3}.
 Available values are as follows:
 <ul><li>{@code GOOGLE_RECAPTCHA_V2}: V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>
-# cas.authn.pm.forgot-username.google-recaptcha.version: GOOGLE_RECAPTCHA_V2
+# cas.authn.pm.forgot-username.google-recaptcha.version: 0.5
 
 # Owner: org.apereo.cas.configuration.model.support.email.EmailProperties
 # Type: java.lang.String
@@ -18750,7 +18697,7 @@ Available values are as follows:
 # Indicate the version of the recaptcha api. Accepted values are: {@code V2, V3}.
 Available values are as follows:
 <ul><li>{@code GOOGLE_RECAPTCHA_V2}: V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>
-# cas.authn.pm.google-recaptcha.version: GOOGLE_RECAPTCHA_V2
+# cas.authn.pm.google-recaptcha.version: 0.5
 
 # Owner: org.apereo.cas.configuration.model.support.pm.GroovyPasswordManagementProperties
 # Type: org.springframework.core.io.Resource
@@ -19668,14 +19615,6 @@ and the value in the map should be the header value.
 # Socket connection timeout in milliseconds.
 # cas.authn.radius.client.socket-timeout: 0
 
-# Owner: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties
-# Type: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties$RadiusClientTransportTypes
-# Transport type to use by this client to connect to the server.
-Available values are as follows:
-<ul><li>{@code UDP}: Default. UDP client transport type.</li><li>{@code RADSEC}: RadSec is a protocol which allows RADIUS servers to
-transfer data over TCP and TLS for increased security.</li></ul>
-# cas.authn.radius.client.transport-type: UDP
-
 # Owner: org.apereo.cas.configuration.model.support.radius.RadiusProperties
 # Type: java.lang.Boolean
 # Whether authentication errors should be skipped and fail over to the next server.
@@ -20031,7 +19970,7 @@ Available values are as follows:
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.redis.read-from: 
+# cas.authn.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -20293,7 +20232,7 @@ are kept in the client browser's session storage, signed and encrypted. SAML2 in
 require client-side read/write operations to restore the session from the browser.</li><li>{@code TICKET_REGISTRY}: Saml requests, and other session data collected as part of SAML flows and requests
 are tracked as CAS tickets in the registry and replicated across the entire cluster
 as tickets.</li></ul>
-# cas.authn.saml-idp.core.session-storage-type: HTTP
+# cas.authn.saml-idp.core.session-storage-type: https://cas.example.org/idp
 
 # Type: java.lang.String
 # 
@@ -21343,7 +21282,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.saml-idp.metadata.redis.read-from: 
+# cas.authn.saml-idp.metadata.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -21462,7 +21401,7 @@ Available values are as follows:
 # Indicate the encoding type of the credential used when rendering the saml response.
 Available values are as follows:
 <ul><li>{@code BASIC}: DER-Encoded format.</li><li>{@code X509}: PEM-encoded X509 format.</li></ul>
-# cas.authn.saml-idp.response.credential-type: X509
+# cas.authn.saml-idp.response.credential-type: uri
 
 # Owner: org.apereo.cas.configuration.model.support.saml.idp.SamlIdPResponseProperties
 # Type: java.lang.String
@@ -21745,7 +21684,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.spnego.ldap.hostname-verifier: DEFAULT
+# cas.authn.spnego.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.spnego.SpnegoLdapProperties
 # Type: java.lang.String
@@ -22504,7 +22443,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.surrogate.ldap.hostname-verifier: DEFAULT
+# cas.authn.surrogate.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.surrogate.SurrogateLdapAuthenticationProperties
 # Type: java.lang.String
@@ -22966,7 +22905,7 @@ attribute and merges those results into the original entry.</li></ul>
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.surrogate.simple.hostname-verifier: DEFAULT
+# cas.authn.surrogate.simple.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.surrogate.SurrogateSimpleAuthenticationProperties
 # Type: java.lang.String
@@ -24831,7 +24770,7 @@ and a principal is first established to then query an attribute source.
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.x509.ldap.hostname-verifier: DEFAULT
+# cas.authn.x509.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.x509.X509LdapProperties
 # Type: java.lang.String
@@ -25191,7 +25130,7 @@ If {@code radix} is {@code 16}, then the serial number could be filled with lead
 Resolve the principal by extracting one or more attribute values from the
 certificate subject DN and combining them with intervening delimiters.</li><li>{@code SUBJECT_ALT_NAME}: Create principal by subject alternative name.
 Resolve the principal by the subject alternative name extension. (type: otherName).</li><li>{@code SUBJECT_DN}: Create principal by subject DN.</li></ul>
-# cas.authn.x509.principal-type: SUBJECT_DN
+# cas.authn.x509.principal-type: MAX_VALUE
 
 # Owner: org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties
 # Type: java.lang.String
@@ -25754,7 +25693,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.consent.ldap.hostname-verifier: DEFAULT
+# cas.consent.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.consent.LdapConsentProperties
 # Type: java.lang.String
@@ -25971,7 +25910,7 @@ attribute and merges those results into the original entry.</li></ul>
 # Type of LDAP directory.
 Available values are as follows:
 <ul><li>{@code GENERIC}: Generic ldap type (OpenLDAP, 389ds, etc).</li><li>{@code AD}: Active directory.</li><li>{@code FreeIPA}: FreeIPA directory.</li><li>{@code EDirectory}: EDirectory.</li></ul>
-# cas.consent.ldap.type: 
+# cas.consent.ldap.type: true
 
 # Owner: org.apereo.cas.configuration.model.support.consent.LdapConsentProperties
 # Type: java.lang.Boolean
@@ -26314,7 +26253,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.consent.redis.read-from: 
+# cas.consent.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -27104,7 +27043,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.events.redis.read-from: 
+# cas.events.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -27284,7 +27223,7 @@ Available values are as follows:
 # Indicate the version of the recaptcha api. Accepted values are: {@code V2, V3}.
 Available values are as follows:
 <ul><li>{@code GOOGLE_RECAPTCHA_V2}: V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>
-# cas.google-recaptcha.version: GOOGLE_RECAPTCHA_V2
+# cas.google-recaptcha.version: 0.5
 
 # Owner: org.apereo.cas.configuration.model.core.CasServerHostProperties
 # Type: java.lang.String
@@ -28004,7 +27943,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.monitor.endpoints.ldap.hostname-verifier: DEFAULT
+# cas.monitor.endpoints.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.core.monitor.LdapSecurityActuatorEndpointsMonitorProperties
 # Type: java.lang.String
@@ -28271,7 +28210,7 @@ attribute and merges those results into the original entry.</li></ul>
 # The authentication type. <ul> <li>{@code AD} - Users authenticate with {@code sAMAccountName}. </li> <li>{@code AUTHENTICATED} - Manager bind/search type of authentication. If {@code} principalAttributePassword} is empty then a user simple bind is done to validate credentials. Otherwise the given attribute is compared with the given {@code principalAttributePassword} using the {@code SHA} encrypted value of it.</li> <li>{@code ANONYMOUS}: Similar semantics as {@code AUTHENTICATED} except no {@code bindDn} and {@code bindCredential} may be specified to initialize the connection. If {@code principalAttributePassword} is empty then a user simple bind is done to validate credentials. Otherwise the given attribute is compared with the given {@code principalAttributePassword} using the {@code SHA} encrypted value of it.</li> <li>DIRECT: Direct Bind - Compute user DN from format string and perform simple bind. This is relevant when no search is required to compute the DN needed for a bind operation. Use cases for this type are: 1) All users are under a single branch in the directory, {@code e.g. ou=Users,dc=example,dc=org.} 2) The username provided on the CAS login form is part of the DN, e.g. {@code uid=%s,ou=Users,dc=example,dc=org}.</li>  </ul>
 Available values are as follows:
 <ul><li>{@code AD}: Active Directory.</li><li>{@code AUTHENTICATED}: Authenticated Search.</li><li>{@code DIRECT}: Direct Bind.</li><li>{@code ANONYMOUS}: Anonymous Search.</li></ul>
-# cas.monitor.endpoints.ldap.type: AUTHENTICATED
+# cas.monitor.endpoints.ldap.type: true
 
 # Owner: org.apereo.cas.configuration.model.core.monitor.LdapSecurityActuatorEndpointsMonitorProperties
 # Type: java.lang.Boolean
@@ -28937,7 +28876,7 @@ Available values are as follows:
 <ul><li>{@code KRYO}: CAS transcoder implementation based on Kryo fast serialization framework
 suited for efficient serialization of tickets. Provides pooling mechanisms
 as well as control over object registration and sequences.</li><li>{@code SERIAL}: Kryp native transcoder that serializes and compresses objects.</li><li>{@code WHALIN}: Transcoder that provides compatibility with Greg Whalin's memcached client.</li><li>{@code WHALINV1}: Handles old whalin encoding: data type is in the first byte of the value.</li></ul>
-# cas.monitor.memcached.transcoder: KRYO
+# cas.monitor.memcached.transcoder: true
 
 # Owner: org.apereo.cas.configuration.model.core.monitor.MemcachedMonitorProperties
 # Type: java.lang.Integer
@@ -32756,11 +32695,6 @@ SSLHostConfig then this attribute is required and each Certificate must have a u
 # HTTP protocol to use.
 # cas.server.tomcat.http.protocol: org.apache.coyote.http11.Http11NioProtocol
 
-# Owner: org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatHttpProperties
-# Type: java.lang.Integer
-# If this Connector is supporting non-SSL requests, this will automatically redirect the request to the port number specified here. Matching security constraints that require SSL transport will be auto-defined.
-# cas.server.tomcat.http.redirect-port: 0
-
 # Owner: org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatRemoteAddressProperties
 # Type: java.lang.String
 # A regular expression (using java.util.regex) that the remote client's IP address is compared to. If this attribute is specified, the remote address MUST match for this request to be accepted. If this attribute is not specified, all requests will be accepted UNLESS the remote address matches a deny pattern.
@@ -33179,6 +33113,11 @@ Available values are as follows:
 # Type: java.lang.Integer
 # Maximum number of parallel threads made for queries.
 # cas.service-registry.couchbase.max-parallelism: 0
+
+# Owner: org.apereo.cas.configuration.model.support.couchbase.serviceregistry.CouchbaseServiceRegistryProperties
+# Type: java.lang.String
+# String representation of query threshold.
+# cas.service-registry.couchbase.query-threshold: PT30S
 
 # Owner: org.apereo.cas.configuration.model.support.couchbase.serviceregistry.CouchbaseServiceRegistryProperties
 # Type: java.lang.String
@@ -33654,7 +33593,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.service-registry.ldap.hostname-verifier: DEFAULT
+# cas.service-registry.ldap.hostname-verifier: true
 
 # Owner: org.apereo.cas.configuration.model.support.ldap.serviceregistry.LdapServiceRegistryProperties
 # Type: java.lang.String
@@ -34272,7 +34211,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.service-registry.redis.read-from: 
+# cas.service-registry.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -34947,7 +34886,7 @@ that contains all service definition files locally, and will stream changes
 to other CAS passive nodes. Passive CAS nodes only access the replication
 cache to retrieve services, and will not individually keep copies of the
 service definition files on disk.</li></ul>
-# cas.service-registry.stream.replication-mode: ACTIVE_PASSIVE
+# cas.service-registry.stream.replication-mode: true
 
 # Owner: org.apereo.cas.configuration.model.support.services.yaml.YamlServiceRegistryProperties
 # Type: org.springframework.core.io.Resource
@@ -36347,6 +36286,11 @@ which is not applicable with this mode.</li></ul>
 # Type: java.lang.Integer
 # Maximum number of parallel threads made for queries.
 # cas.ticket.registry.couchbase.max-parallelism: 0
+
+# Owner: org.apereo.cas.configuration.model.support.couchbase.ticketregistry.CouchbaseTicketRegistryProperties
+# Type: java.lang.String
+# String representation of query threshold.
+# cas.ticket.registry.couchbase.query-threshold: PT30S
 
 # Owner: org.apereo.cas.configuration.model.support.couchbase.ticketregistry.CouchbaseTicketRegistryProperties
 # Type: java.lang.String
@@ -38028,7 +37972,7 @@ Available values are as follows:
 <ul><li>{@code KRYO}: CAS transcoder implementation based on Kryo fast serialization framework
 suited for efficient serialization of tickets. Provides pooling mechanisms
 as well as control over object registration and sequences.</li><li>{@code SERIAL}: Kryp native transcoder that serializes and compresses objects.</li><li>{@code WHALIN}: Transcoder that provides compatibility with Greg Whalin's memcached client.</li><li>{@code WHALINV1}: Handles old whalin encoding: data type is in the first byte of the value.</li></ul>
-# cas.ticket.registry.memcached.transcoder: KRYO
+# cas.ticket.registry.memcached.transcoder: true
 
 # Owner: org.apereo.cas.configuration.model.support.memcached.MemcachedTicketRegistryProperties
 # Type: java.lang.Integer
@@ -38376,7 +38320,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.ticket.registry.redis.read-from: 
+# cas.ticket.registry.redis.read-from: PT10S
 
 # Owner: org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties
 # Type: java.lang.String
@@ -38488,11 +38432,6 @@ Available values are as follows:
 # cas.ticket.tgt.timeout.max-time-to-live-in-seconds: 0
 
 # Owner: org.apereo.cas.configuration.model.core.ticket.TransientSessionTicketProperties
-# Type: java.lang.Integer
-# Controls number of times a ticket can be used within CAS server.
-# cas.ticket.tst.number-of-uses: 1
-
-# Owner: org.apereo.cas.configuration.model.core.ticket.TransientSessionTicketProperties
 # Type: java.lang.Long
 # Number of seconds after which this ticket becomes invalid.
 # cas.ticket.tst.time-to-kill-in-seconds: 5
@@ -38539,7 +38478,7 @@ Available values are as follows:
 # Owner: org.apereo.cas.configuration.model.core.web.view.Cas20ViewProperties
 # Type: java.lang.Boolean
 # Whether v2 protocol support should be forward compatible to act like v3 and match its response, mainly for attribute release.
-# cas.view.cas2.v3-forward-compatible: true
+# cas.view.cas2.v3-forward-compatible: false
 
 # Owner: org.apereo.cas.configuration.model.core.web.view.Cas30ViewProperties
 # Type: org.apereo.cas.configuration.model.core.web.view.Cas30ViewProperties$ValidationAttributesRendererTypes
@@ -39279,7 +39218,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.actuate.autoconfigure.context.properties.ConfigurationPropertiesReportEndpointProperties
 # Type: java.lang.String[]
 # Keys that should be sanitized. Keys can be simple strings that the property ends with or regular expressions.
-# management.endpoint.configprops.keys-to-sanitize: [Ljava.lang.Object;@152824b1
+# management.endpoint.configprops.keys-to-sanitize: [Ljava.lang.Object;@7b587b33
 
 # Owner: org.springframework.boot.actuate.autoconfigure.env.EnvironmentEndpointProperties
 # Type: java.lang.String[]
@@ -39299,7 +39238,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.actuate.autoconfigure.env.EnvironmentEndpointProperties
 # Type: java.lang.String[]
 # Keys that should be sanitized. Keys can be simple strings that the property ends with or regular expressions.
-# management.endpoint.env.keys-to-sanitize: [Ljava.lang.Object;@56c82d6e
+# management.endpoint.env.keys-to-sanitize: [Ljava.lang.Object;@f628506
 
 # Type: java.lang.Boolean
 # Enables writable environment endpoint.
@@ -39367,7 +39306,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.actuate.autoconfigure.health.HealthProperties$Status
 # Type: java.util.List<java.lang.String>
 # Comma-separated list of health statuses in order of severity.
-# management.endpoint.health.status.order: [Ljava.lang.Object;@38a9e14d
+# management.endpoint.health.status.order: [Ljava.lang.Object;@5fea8762
 
 # Owner: org.springframework.boot.actuate.management.HeapDumpWebEndpoint
 # Type: java.time.Duration
@@ -39654,7 +39593,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties$Exposure
 # Type: java.util.Set<java.lang.String>
 # Endpoint IDs that should be included or '*' for all.
-# management.endpoints.web.exposure.include: [Ljava.lang.Object;@10201f4
+# management.endpoints.web.exposure.include: [Ljava.lang.Object;@49ac283a
 
 # Owner: org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties
 # Type: java.util.Map<java.lang.String,java.lang.String>
@@ -39775,7 +39714,7 @@ used to present a label/text in CAS views.
 
 # Type: 
 # 
-# management.health.status.order: [Ljava.lang.Object;@55dba0c9
+# management.health.status.order: [Ljava.lang.Object;@719553df
 
 # Type: java.lang.Boolean
 # Whether to enable build info.
@@ -40277,7 +40216,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.actuate.autoconfigure.metrics.export.graphite.GraphiteProperties
 # Type: java.lang.String[]
 # For the hierarchical naming convention, turn the specified tag keys into part of the metric prefix. Ignored if "graphiteTagsEnabled" is true.
-# management.metrics.export.graphite.tags-as-prefix: [Ljava.lang.Object;@426f4441
+# management.metrics.export.graphite.tags-as-prefix: [Ljava.lang.Object;@6a44a25e
 
 # Owner: org.springframework.boot.actuate.autoconfigure.metrics.export.humio.HumioProperties
 # Type: java.lang.String
@@ -41022,7 +40961,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.actuate.autoconfigure.trace.http.HttpTraceProperties
 # Type: java.util.Set<org.springframework.boot.actuate.trace.http.Include>
 # Items to be included in the trace. Defaults to request headers (excluding Authorization and Cookie), response headers (excluding Set-Cookie), and time taken.
-# management.trace.http.include: [Ljava.lang.Object;@35bb76c8
+# management.trace.http.include: [Ljava.lang.Object;@619ef9e3
 
 # Type: 
 # 
@@ -41048,7 +40987,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.web.server.Compression
 # Type: java.lang.String[]
 # Comma-separated list of MIME types that should be compressed.
-# server.compression.mime-types: [Ljava.lang.Object;@24a7cc2a
+# server.compression.mime-types: [Ljava.lang.Object;@49dbf012
 
 # Owner: org.springframework.boot.web.server.Compression
 # Type: org.springframework.util.unit.DataSize
@@ -42000,7 +41939,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.jms.artemis.ArtemisProperties$Embedded
 # Type: java.lang.String[]
 # Comma-separated list of queues to create on startup.
-# spring.artemis.embedded.queues: [Ljava.lang.Object;@2c72ed9f
+# spring.artemis.embedded.queues: [Ljava.lang.Object;@120b595d
 
 # Owner: org.springframework.boot.autoconfigure.jms.artemis.ArtemisProperties$Embedded
 # Type: java.lang.Integer
@@ -42010,7 +41949,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.jms.artemis.ArtemisProperties$Embedded
 # Type: java.lang.String[]
 # Comma-separated list of topics to create on startup.
-# spring.artemis.embedded.topics: [Ljava.lang.Object;@1487f91c
+# spring.artemis.embedded.topics: [Ljava.lang.Object;@5d924f10
 
 # Owner: org.springframework.boot.autoconfigure.jms.artemis.ArtemisProperties
 # Type: java.lang.String
@@ -42731,7 +42670,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.cassandra.CassandraProperties
 # Type: java.util.List<java.lang.String>
 # Cluster node addresses in the form 'host:port', or a simple 'host' to use the configured port.
-# spring.data.cassandra.contact-points: [Ljava.lang.Object;@7ae4c072
+# spring.data.cassandra.contact-points: [Ljava.lang.Object;@4bd5f4a0
 
 # Owner: org.springframework.boot.autoconfigure.cassandra.CassandraProperties$Controlconnection
 # Type: java.time.Duration
@@ -44316,7 +44255,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientProperties
 # Type: java.util.List<java.lang.String>
 # Comma-separated list of the Elasticsearch instances to use.
-# spring.elasticsearch.rest.uris: [Ljava.lang.Object;@60b89598
+# spring.elasticsearch.rest.uris: [Ljava.lang.Object;@5d18c6a8
 
 # Owner: org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientProperties
 # Type: java.lang.String
@@ -44461,7 +44400,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.flyway.FlywayProperties
 # Type: java.util.List<java.lang.String>
 # Locations of migrations scripts. Can contain the special "{vendor}" placeholder to use vendor-specific locations.
-# spring.flyway.locations: [Ljava.lang.Object;@5b9d8205
+# spring.flyway.locations: [Ljava.lang.Object;@1511ade7
 
 # Owner: org.springframework.boot.autoconfigure.flyway.FlywayProperties
 # Type: java.lang.Integer
@@ -44572,7 +44511,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.flyway.FlywayProperties
 # Type: java.util.List<java.lang.String>
 # File name suffix for SQL migrations.
-# spring.flyway.sql-migration-suffixes: [Ljava.lang.Object;@70f9cf73
+# spring.flyway.sql-migration-suffixes: [Ljava.lang.Object;@5a348a9a
 
 # Owner: org.springframework.boot.autoconfigure.flyway.FlywayProperties
 # Type: java.lang.Boolean
@@ -44714,7 +44653,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.freemarker.FreeMarkerProperties
 # Type: java.lang.String[]
 # Comma-separated list of template paths.
-# spring.freemarker.template-loader-path: [Ljava.lang.Object;@2c42664e
+# spring.freemarker.template-loader-path: [Ljava.lang.Object;@3ea01588
 
 # Owner: org.springframework.boot.autoconfigure.freemarker.FreeMarkerProperties
 # Type: java.lang.String[]
@@ -45962,7 +45901,7 @@ used to present a label/text in CAS views.
 
 # Type: java.util.List<java.lang.String>
 # Comma-separated list of expiry scanners.
-# spring.jta.narayana.expiry-scanners: [Ljava.lang.Object;@872320b
+# spring.jta.narayana.expiry-scanners: [Ljava.lang.Object;@2596b972
 # Deprecation Level: ERROR
 # Deprecation Reason: Narayana support has moved to third party starter.
 
@@ -46986,7 +46925,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoProperties
 # Type: java.util.Set<de.flapdoodle.embed.mongo.distribution.Feature>
 # Comma-separated list of features to enable. Uses the defaults of the configured version by default.
-# spring.mongodb.embedded.features: [Ljava.lang.Object;@3fc804aa
+# spring.mongodb.embedded.features: [Ljava.lang.Object;@3d7056b2
 
 # Owner: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoProperties$Storage
 # Type: java.lang.String
@@ -47336,7 +47275,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.netty.NettyProperties
 # Type: org.springframework.boot.autoconfigure.netty.NettyProperties$LeakDetection
 # Level of leak detection for reference-counted buffers.
-# spring.netty.leak-detection: simple
+# spring.netty.leak-detection: disabled
 
 # Type: org.springframework.boot.ansi.AnsiOutput$Enabled
 # Configures the ANSI output.
@@ -47386,7 +47325,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.quartz.QuartzProperties$Jdbc
 # Type: java.util.List<java.lang.String>
 # Prefixes for single-line comments in SQL initialization scripts.
-# spring.quartz.jdbc.comment-prefix: [Ljava.lang.Object;@174c677
+# spring.quartz.jdbc.comment-prefix: [Ljava.lang.Object;@436e7bdc
 
 # Owner: org.springframework.boot.autoconfigure.quartz.QuartzProperties$Jdbc
 # Type: org.springframework.boot.jdbc.DataSourceInitializationMode
@@ -48185,7 +48124,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.web.ResourceProperties$Content
 # Type: java.lang.String[]
 # Comma-separated list of patterns to apply to the content Version Strategy.
-# spring.resources.chain.strategy.content.paths: [Ljava.lang.Object;@3ebbb001
+# spring.resources.chain.strategy.content.paths: [Ljava.lang.Object;@7d5c3a6c
 # Deprecation Level: WARNING
 # Deprecation Replacement: spring.web.resources.chain.strategy.content.paths
 
@@ -48199,7 +48138,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.web.ResourceProperties$Fixed
 # Type: java.lang.String[]
 # Comma-separated list of patterns to apply to the fixed Version Strategy.
-# spring.resources.chain.strategy.fixed.paths: [Ljava.lang.Object;@27403fb7
+# spring.resources.chain.strategy.fixed.paths: [Ljava.lang.Object;@6d91519c
 # Deprecation Level: WARNING
 # Deprecation Replacement: spring.web.resources.chain.strategy.fixed.paths
 
@@ -48213,7 +48152,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.web.ResourceProperties
 # Type: java.lang.String[]
 # Locations of static resources. Defaults to classpath:[/META-INF/resources/, /resources/, /static/, /public/].
-# spring.resources.static-locations: [Ljava.lang.Object;@585282a1
+# spring.resources.static-locations: [Ljava.lang.Object;@526b5f5a
 # Deprecation Level: WARNING
 # Deprecation Replacement: spring.web.resources.static-locations
 
@@ -48320,7 +48259,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.security.SecurityProperties$Filter
 # Type: java.util.Set<org.springframework.boot.web.servlet.DispatcherType>
 # Security filter chain dispatcher types.
-# spring.security.filter.dispatcher-types: [Ljava.lang.Object;@7f32a0a2
+# spring.security.filter.dispatcher-types: [Ljava.lang.Object;@626b7e50
 
 # Owner: org.springframework.boot.autoconfigure.security.SecurityProperties$Filter
 # Type: java.lang.Integer
@@ -48515,7 +48454,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.session.SessionProperties$Servlet
 # Type: java.util.Set<org.springframework.boot.web.servlet.DispatcherType>
 # Session repository filter dispatcher types.
-# spring.session.servlet.filter-dispatcher-types: [Ljava.lang.Object;@1cea3cfd
+# spring.session.servlet.filter-dispatcher-types: [Ljava.lang.Object;@7ef8b72b
 
 # Owner: org.springframework.boot.autoconfigure.session.SessionProperties$Servlet
 # Type: java.lang.Integer
@@ -48851,7 +48790,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.web.WebProperties$Resources$Chain$Strategy$Content
 # Type: java.lang.String[]
 # Comma-separated list of patterns to apply to the content Version Strategy.
-# spring.web.resources.chain.strategy.content.paths: [Ljava.lang.Object;@3a710550
+# spring.web.resources.chain.strategy.content.paths: [Ljava.lang.Object;@190204d9
 
 # Owner: org.springframework.boot.autoconfigure.web.WebProperties$Resources$Chain$Strategy$Fixed
 # Type: java.lang.Boolean
@@ -48861,7 +48800,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.web.WebProperties$Resources$Chain$Strategy$Fixed
 # Type: java.lang.String[]
 # Comma-separated list of patterns to apply to the fixed Version Strategy.
-# spring.web.resources.chain.strategy.fixed.paths: [Ljava.lang.Object;@767acf35
+# spring.web.resources.chain.strategy.fixed.paths: [Ljava.lang.Object;@119b192c
 
 # Owner: org.springframework.boot.autoconfigure.web.WebProperties$Resources$Chain$Strategy$Fixed
 # Type: java.lang.String
@@ -48871,7 +48810,7 @@ used to present a label/text in CAS views.
 # Owner: org.springframework.boot.autoconfigure.web.WebProperties$Resources
 # Type: java.lang.String[]
 # Locations of static resources. Defaults to classpath:[/META-INF/resources/, /resources/, /static/, /public/].
-# spring.web.resources.static-locations: [Ljava.lang.Object;@1c2746e8
+# spring.web.resources.static-locations: [Ljava.lang.Object;@28bb7cb1
 
 # Owner: org.springframework.boot.autoconfigure.web.reactive.WebFluxProperties
 # Type: java.lang.String

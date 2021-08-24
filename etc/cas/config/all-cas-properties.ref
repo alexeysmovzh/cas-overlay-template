@@ -247,6 +247,13 @@
 # Type: java.lang.String
 # Owner: org.apereo.cas.configuration.model.support.aup.CouchbaseAcceptableUsagePolicyProperties
 # Module: cas-server-support-aup-couchbase
+# String representation of query threshold.
+# cas.acceptable-usage-policy.couchbase.query-threshold: PT30S
+
+# Required: false
+# Type: java.lang.String
+# Owner: org.apereo.cas.configuration.model.support.aup.CouchbaseAcceptableUsagePolicyProperties
+# Module: cas-server-support-aup-couchbase
 # String representation of query timeout.
 # cas.acceptable-usage-policy.couchbase.query-timeout: PT30S
 
@@ -1390,7 +1397,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.acceptable-usage-policy.redis.read-from: 
+# cas.acceptable-usage-policy.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -1895,6 +1902,13 @@ Available values are as follows:
 # Module: cas-server-support-audit-couchbase
 # Maximum number of parallel threads made for queries.
 # cas.audit.couchbase.max-parallelism: 0
+
+# Required: false
+# Type: java.lang.String
+# Owner: org.apereo.cas.configuration.model.core.audit.AuditCouchbaseProperties
+# Module: cas-server-support-audit-couchbase
+# String representation of query threshold.
+# cas.audit.couchbase.query-threshold: PT30S
 
 # Required: false
 # Type: java.lang.String
@@ -2870,7 +2884,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.audit.redis.read-from: 
+# cas.audit.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -3086,7 +3100,7 @@ Available values are as follows:
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option to handle policy changes.</li><li>{@code GROOVY}: Handle account password policies via Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password policy
 if the authentication response code is not blocked.</li></ul>
-# cas.authn.accept.password-policy.strategy: DEFAULT
+# cas.authn.accept.password-policy.strategy: 30
 
 # Required: false
 # Type: java.lang.Boolean
@@ -3624,7 +3638,7 @@ Available values are as follows:
 Retains existing attribute values if any, and ignores values from subsequent sources in the resolution chain.</li><li>{@code NONE}: No merging.
 Doesn't merge attributes, ignores attributes from non-authentication attribute repositories.</li><li>{@code MULTIVALUED}: Multivalued attributes.
 Combines all values into a single attribute, essentially creating a multi-valued attribute.</li></ul>
-# cas.authn.attribute-repository.core.merger: REPLACE
+# cas.authn.attribute-repository.core.merger: MERGE
 
 # Required: false
 # Type: java.lang.Boolean
@@ -3716,6 +3730,13 @@ Combines all values into a single attribute, essentially creating a multi-valued
 # Module: cas-server-support-couchbase-authentication
 # The order of this attribute repository in the chain of repositories. Can be used to explicitly position this source in chain and affects merging strategies.
 # cas.authn.attribute-repository.couchbase.order: 0
+
+# Required: false
+# Type: java.lang.String
+# Owner: org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties
+# Module: cas-server-support-couchbase-authentication
+# String representation of query threshold.
+# cas.authn.attribute-repository.couchbase.query-threshold: PT30S
 
 # Required: false
 # Type: java.lang.String
@@ -6541,6 +6562,13 @@ Available values are as follows:
 # Type: java.lang.String
 # Owner: org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbaseAuthenticationProperties
 # Module: cas-server-support-couchbase-authentication
+# String representation of query threshold.
+# cas.authn.couchbase.query-threshold: PT30S
+
+# Required: false
+# Type: java.lang.String
+# Owner: org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbaseAuthenticationProperties
+# Module: cas-server-support-couchbase-authentication
 # String representation of query timeout.
 # cas.authn.couchbase.query-timeout: PT30S
 
@@ -6854,7 +6882,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.gua.ldap.hostname-verifier: DEFAULT
+# cas.authn.gua.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -9455,7 +9483,7 @@ schema changes and updates, when needed.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option to handle policy changes.</li><li>{@code GROOVY}: Handle account password policies via Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password policy
 if the authentication response code is not blocked.</li></ul>
-# cas.authn.json.password-policy.strategy: DEFAULT
+# cas.authn.json.password-policy.strategy: 30
 
 # Required: false
 # Type: java.lang.Boolean
@@ -10816,7 +10844,7 @@ Available values are as follows:
 # Defines the global failure mode for the entire deployment. This is meant to be used a shortcut to define the policy globally rather than per application. Applications registered with CAS can still define a failure mode and override the global.
 Available values are as follows:
 <ul><li>{@code OPEN}: Disallow MFA, proceed with authentication but don't communicate MFA to the RP.</li><li>{@code CLOSED}: Disallow MFA, block with authentication.</li><li>{@code PHANTOM}: Disallow MFA, proceed with authentication and communicate MFA to the RP.</li><li>{@code NONE}: Do not check for failure at all.</li><li>{@code UNDEFINED}: The default one indicating that no failure mode is set at all.</li></ul>
-# cas.authn.mfa.core.global-failure-mode: 
+# cas.authn.mfa.core.global-failure-mode: CLOSED
 
 # Required: false
 # Type: java.lang.Boolean
@@ -10970,20 +10998,6 @@ Examples include {@code GET, POST}, etc.
 # The endpoint URL to contact and retrieve attributes.
 # cas.authn.mfa.duo[].bypass.rest.url: 
 
-# Required: false
-# Type: java.lang.String
-# Owner: org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties
-# Module: cas-server-support-duo
-# Duo admin integration key.
-# cas.authn.mfa.duo[].duo-admin-integration-key: 
-
-# Required: false
-# Type: java.lang.String
-# Owner: org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties
-# Module: cas-server-support-duo
-# Duo admin secret key.
-# cas.authn.mfa.duo[].duo-admin-secret-key: 
-
 # Required: true
 # Type: java.lang.String
 # Owner: org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties
@@ -10999,7 +11013,7 @@ Examples include {@code GET, POST}, etc.
 that you generate and keep secret from Duo.
 This is a required setting for the WebSDK integration types.
 Leaving this setting as blank will activate the Universal Prompt option.
-<p>
+
 You can generate a random string in Python with:
 &lt;pre&gt;
 import os, hashlib
@@ -11799,7 +11813,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.mfa.gauth.ldap.hostname-verifier: DEFAULT
+# cas.authn.mfa.gauth.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -12594,7 +12608,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.gauth.redis.read-from: 
+# cas.authn.mfa.gauth.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -13093,16 +13107,6 @@ Available values are as follows:
 # Module: cas-server-support-radius
 # Socket connection timeout in milliseconds.
 # cas.authn.mfa.radius.client.socket-timeout: 0
-
-# Required: false
-# Type: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties$RadiusClientTransportTypes
-# Owner: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties
-# Module: cas-server-support-radius
-# Transport type to use by this client to connect to the server.
-Available values are as follows:
-<ul><li>{@code UDP}: Default. UDP client transport type.</li><li>{@code RADSEC}: RadSec is a protocol which allows RADIUS servers to
-transfer data over TCP and TLS for increased security.</li></ul>
-# cas.authn.mfa.radius.client.transport-type: UDP
 
 # Required: false
 # Type: java.lang.Boolean
@@ -14968,7 +14972,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.trusted.redis.read-from: 
+# cas.authn.mfa.trusted.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -16351,7 +16355,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.u2f.redis.read-from: 
+# cas.authn.mfa.u2f.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -17206,7 +17210,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.mfa.web-authn.ldap.hostname-verifier: DEFAULT
+# cas.authn.mfa.web-authn.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -17994,7 +17998,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.web-authn.redis.read-from: 
+# cas.authn.mfa.web-authn.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -19186,7 +19190,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.mfa.yubikey.redis.read-from: 
+# cas.authn.mfa.yubikey.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -20114,13 +20118,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Deprecation Replacement: cas.authn.oidc.core.claims-map
 
 # Required: false
-# Type: java.util.List<java.lang.String>
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties
-# Module: cas-server-support-oidc
-# A mapping of authentication context refs (ACR) values. This is where specific authentication context classes are referenced and mapped to providers that CAS may support mainly for MFA purposes. <p> Example might be {@code acr-value->mfa-duo}.
-# cas.authn.oidc.core.authentication-context-reference-mappings: 
-
-# Required: false
 # Type: java.util.Map<java.lang.String,java.lang.String>
 # Owner: org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties
 # Module: cas-server-support-oidc
@@ -20133,13 +20130,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Module: cas-server-support-oidc
 # Whether dynamic registration operates in {@code OPEN} or {@code PROTECTED} mode.
 # cas.authn.oidc.core.dynamic-client-registration-mode: 
-
-# Required: false
-# Type: java.lang.Boolean
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties
-# Module: cas-server-support-oidc
-# As per OpenID Connect Core section 5.4, "The Claims requested by the {@code profile}, {@code email}, {@code address}, and {@code phone} scope values are returned from the userinfo endpoint", except for {@code response_type}={@code id_token}, where they are returned in the id_token (as there is no access token issued that could be used to access the userinfo endpoint). The Claims requested by the profile, email, address, and phone scope values are returned from the userinfo endpoint when a {@code response_type} value is used that results in an access token being issued. However, when no access token is issued (which is the case for the {@code response_type} value {@code id_token}), the resulting Claims are returned in the ID Token. <p> Setting this flag to true will force CAS to include claims in the ID token regardless of the response type. Note that this setting <strong>MUST ONLY</strong> be used as a last resort, to stay compliant with the specification as much as possible. <strong>DO NOT</strong> use this setting without due consideration. <p> Note that this setting is set to {@code true} by default mainly provided to preserve backward compatibility with previous CAS versions that included claims into the ID token without considering the response type. The behavior of this setting may change and it may be removed in future CAS releases.
-# cas.authn.oidc.core.include-id-token-claims: true
 
 # Required: true
 # Type: java.lang.String
@@ -20166,20 +20156,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Type: java.util.List<java.lang.String>
 # Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
 # Module: cas-server-support-oidc
-# List of ACR values supported. This discovery element contains a list of the supported acr values supported by this server.
-# cas.authn.oidc.discovery.acr-values-supported: 
-
-# Required: false
-# Type: java.lang.Boolean
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
-# Parameter indicating whether the authorization server provides the {@code iss} parameter in the authorization response.
-# cas.authn.oidc.discovery.authorization-response-issuer-parameter-supported: false
-
-# Required: false
-# Type: java.util.List<java.lang.String>
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
 # Supported claim types.
 # cas.authn.oidc.discovery.claim-types-supported: 
 
@@ -20189,13 +20165,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Module: cas-server-support-oidc
 # List of supported claims.
 # cas.authn.oidc.discovery.claims: 
-
-# Required: false
-# Type: java.lang.Boolean
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
-# Specifying whether this provider supports use of the claims parameter.
-# cas.authn.oidc.discovery.claims-parameter-supported: true
 
 # Required: false
 # Type: java.util.List<java.lang.String>
@@ -20238,41 +20207,6 @@ where all attributes are flattened down to one level only.</li></ul>
 # Module: cas-server-support-oidc
 # Supported authentication methods for introspection.
 # cas.authn.oidc.discovery.introspection-supported-authentication-methods: 
-
-# Required: false
-# Type: java.util.List<java.lang.String>
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
-# Supported algorithms for request object encryption.
-# cas.authn.oidc.discovery.request-object-encryption-alg-values-supported: 
-
-# Required: false
-# Type: java.util.List<java.lang.String>
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
-# Supported encoding strategies for request object encryption.
-# cas.authn.oidc.discovery.request-object-encryption-encoding-values-supported: 
-
-# Required: false
-# Type: java.util.List<java.lang.String>
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
-# Supported algorithms for request object signing.
-# cas.authn.oidc.discovery.request-object-signing-alg-values-supported: 
-
-# Required: false
-# Type: java.lang.Boolean
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
-# Specifying whether this provider supports use of the {@code request} parameter.
-# cas.authn.oidc.discovery.request-parameter-supported: true
-
-# Required: false
-# Type: java.lang.Boolean
-# Owner: org.apereo.cas.configuration.model.support.oidc.OidcDiscoveryProperties
-# Module: cas-server-support-oidc
-# Specifying whether this provider supports use of the {@code request_uri} parameter.
-# cas.authn.oidc.discovery.request-uri-parameter-supported: true
 
 # Required: false
 # Type: java.util.List<java.lang.String>
@@ -20974,13 +20908,6 @@ Acceptable values are {@code CAS10, CAS20, CAS20_PROXY, CAS30, CAS30_PROXY, SAML
 # Module: cas-server-support-pac4j-webflow
 # True if sending this cookie should be restricted to a secure protocol, or false if the it can be sent using any protocol.
 # cas.authn.pac4j.cookie.secure: true
-
-# Required: true
-# Type: org.springframework.core.io.Resource
-# Owner: org.apereo.cas.configuration.model.SpringResourceProperties
-# Module: cas-server-core-util
-# The location of the resource. Resources can be URLS, or files found either on the classpath or outside somewhere in the file system.
-# cas.authn.pac4j.core.groovy-redirection-strategy.location: 
 
 # Required: false
 # Type: java.lang.Boolean
@@ -24296,7 +24223,7 @@ Validation is considered successful if the search result size is greater than ze
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.passwordless.accounts.ldap.hostname-verifier: DEFAULT
+# cas.authn.passwordless.accounts.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -25366,7 +25293,7 @@ attribute and merges those results into the original entry.</li></ul>
 # The google reCAPTCHA site key.
 # cas.authn.pm.forgot-username.google-recaptcha.site-key: 
 
-# Required: false
+# Required: true
 # Type: java.lang.String
 # Owner: org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties
 # Module: cas-server-support-captcha
@@ -25380,7 +25307,7 @@ attribute and merges those results into the original entry.</li></ul>
 # Indicate the version of the recaptcha api. Accepted values are: {@code V2, V3}.
 Available values are as follows:
 <ul><li>{@code GOOGLE_RECAPTCHA_V2}: V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>
-# cas.authn.pm.forgot-username.google-recaptcha.version: GOOGLE_RECAPTCHA_V2
+# cas.authn.pm.forgot-username.google-recaptcha.version: 0.5
 
 # Required: true
 # Type: java.lang.String
@@ -25487,7 +25414,7 @@ Available values are as follows:
 # The google reCAPTCHA site key.
 # cas.authn.pm.google-recaptcha.site-key: 
 
-# Required: false
+# Required: true
 # Type: java.lang.String
 # Owner: org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties
 # Module: cas-server-support-captcha
@@ -25501,7 +25428,7 @@ Available values are as follows:
 # Indicate the version of the recaptcha api. Accepted values are: {@code V2, V3}.
 Available values are as follows:
 <ul><li>{@code GOOGLE_RECAPTCHA_V2}: V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>
-# cas.authn.pm.google-recaptcha.version: GOOGLE_RECAPTCHA_V2
+# cas.authn.pm.google-recaptcha.version: 0.5
 
 # Required: true
 # Type: org.springframework.core.io.Resource
@@ -26745,16 +26672,6 @@ and the value in the map should be the header value.
 # cas.authn.radius.client.socket-timeout: 0
 
 # Required: false
-# Type: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties$RadiusClientTransportTypes
-# Owner: org.apereo.cas.configuration.model.support.radius.RadiusClientProperties
-# Module: cas-server-support-radius
-# Transport type to use by this client to connect to the server.
-Available values are as follows:
-<ul><li>{@code UDP}: Default. UDP client transport type.</li><li>{@code RADSEC}: RadSec is a protocol which allows RADIUS servers to
-transfer data over TCP and TLS for increased security.</li></ul>
-# cas.authn.radius.client.transport-type: UDP
-
-# Required: false
 # Type: java.lang.Boolean
 # Owner: org.apereo.cas.configuration.model.support.radius.RadiusProperties
 # Module: cas-server-support-radius
@@ -27249,7 +27166,7 @@ Available values are as follows:
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.redis.read-from: 
+# cas.authn.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -27613,7 +27530,7 @@ are kept in the client browser's session storage, signed and encrypted. SAML2 in
 require client-side read/write operations to restore the session from the browser.</li><li>{@code TICKET_REGISTRY}: Saml requests, and other session data collected as part of SAML flows and requests
 are tracked as CAS tickets in the registry and replicated across the entire cluster
 as tickets.</li></ul>
-# cas.authn.saml-idp.core.session-storage-type: HTTP
+# cas.authn.saml-idp.core.session-storage-type: https://cas.example.org/idp
 
 # Required: false
 # Type: java.lang.String
@@ -29082,7 +28999,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.authn.saml-idp.metadata.redis.read-from: 
+# cas.authn.saml-idp.metadata.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -29248,7 +29165,7 @@ Available values are as follows:
 # Indicate the encoding type of the credential used when rendering the saml response.
 Available values are as follows:
 <ul><li>{@code BASIC}: DER-Encoded format.</li><li>{@code X509}: PEM-encoded X509 format.</li></ul>
-# cas.authn.saml-idp.response.credential-type: X509
+# cas.authn.saml-idp.response.credential-type: uri
 
 # Required: false
 # Type: java.lang.String
@@ -29642,7 +29559,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.spnego.ldap.hostname-verifier: DEFAULT
+# cas.authn.spnego.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -30697,7 +30614,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.surrogate.ldap.hostname-verifier: DEFAULT
+# cas.authn.surrogate.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -31337,7 +31254,7 @@ attribute and merges those results into the original entry.</li></ul>
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.surrogate.simple.hostname-verifier: DEFAULT
+# cas.authn.surrogate.simple.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -33901,7 +33818,7 @@ and a principal is first established to then query an attribute source.
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.authn.x509.ldap.hostname-verifier: DEFAULT
+# cas.authn.x509.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -34395,7 +34312,7 @@ If {@code radix} is {@code 16}, then the serial number could be filled with lead
 Resolve the principal by extracting one or more attribute values from the
 certificate subject DN and combining them with intervening delimiters.</li><li>{@code SUBJECT_ALT_NAME}: Create principal by subject alternative name.
 Resolve the principal by the subject alternative name extension. (type: otherName).</li><li>{@code SUBJECT_DN}: Create principal by subject DN.</li></ul>
-# cas.authn.x509.principal-type: SUBJECT_DN
+# cas.authn.x509.principal-type: MAX_VALUE
 
 # Required: false
 # Type: java.lang.String
@@ -35178,7 +35095,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.consent.ldap.hostname-verifier: DEFAULT
+# cas.consent.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -35475,7 +35392,7 @@ attribute and merges those results into the original entry.</li></ul>
 # Type of LDAP directory.
 Available values are as follows:
 <ul><li>{@code GENERIC}: Generic ldap type (OpenLDAP, 389ds, etc).</li><li>{@code AD}: Active directory.</li><li>{@code FreeIPA}: FreeIPA directory.</li><li>{@code EDirectory}: EDirectory.</li></ul>
-# cas.consent.ldap.type: 
+# cas.consent.ldap.type: true
 
 # Required: false
 # Type: java.lang.Boolean
@@ -35954,7 +35871,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.consent.redis.read-from: 
+# cas.consent.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -37049,7 +36966,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.events.redis.read-from: 
+# cas.events.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -37285,7 +37202,7 @@ Available values are as follows:
 # The google reCAPTCHA site key.
 # cas.google-recaptcha.site-key: 
 
-# Required: false
+# Required: true
 # Type: java.lang.String
 # Owner: org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties
 # Module: cas-server-support-captcha
@@ -37299,7 +37216,7 @@ Available values are as follows:
 # Indicate the version of the recaptcha api. Accepted values are: {@code V2, V3}.
 Available values are as follows:
 <ul><li>{@code GOOGLE_RECAPTCHA_V2}: V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>
-# cas.google-recaptcha.version: GOOGLE_RECAPTCHA_V2
+# cas.google-recaptcha.version: 0.5
 
 # Required: false
 # Type: java.lang.String
@@ -38304,7 +38221,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.monitor.endpoints.ldap.hostname-verifier: DEFAULT
+# cas.monitor.endpoints.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -38671,7 +38588,7 @@ attribute and merges those results into the original entry.</li></ul>
 # The authentication type. <ul> <li>{@code AD} - Users authenticate with {@code sAMAccountName}. </li> <li>{@code AUTHENTICATED} - Manager bind/search type of authentication. If {@code} principalAttributePassword} is empty then a user simple bind is done to validate credentials. Otherwise the given attribute is compared with the given {@code principalAttributePassword} using the {@code SHA} encrypted value of it.</li> <li>{@code ANONYMOUS}: Similar semantics as {@code AUTHENTICATED} except no {@code bindDn} and {@code bindCredential} may be specified to initialize the connection. If {@code principalAttributePassword} is empty then a user simple bind is done to validate credentials. Otherwise the given attribute is compared with the given {@code principalAttributePassword} using the {@code SHA} encrypted value of it.</li> <li>DIRECT: Direct Bind - Compute user DN from format string and perform simple bind. This is relevant when no search is required to compute the DN needed for a bind operation. Use cases for this type are: 1) All users are under a single branch in the directory, {@code e.g. ou=Users,dc=example,dc=org.} 2) The username provided on the CAS login form is part of the DN, e.g. {@code uid=%s,ou=Users,dc=example,dc=org}.</li>  </ul>
 Available values are as follows:
 <ul><li>{@code AD}: Active Directory.</li><li>{@code AUTHENTICATED}: Authenticated Search.</li><li>{@code DIRECT}: Direct Bind.</li><li>{@code ANONYMOUS}: Anonymous Search.</li></ul>
-# cas.monitor.endpoints.ldap.type: AUTHENTICATED
+# cas.monitor.endpoints.ldap.type: true
 
 # Required: false
 # Type: java.lang.Boolean
@@ -39567,7 +39484,7 @@ Available values are as follows:
 <ul><li>{@code KRYO}: CAS transcoder implementation based on Kryo fast serialization framework
 suited for efficient serialization of tickets. Provides pooling mechanisms
 as well as control over object registration and sequences.</li><li>{@code SERIAL}: Kryp native transcoder that serializes and compresses objects.</li><li>{@code WHALIN}: Transcoder that provides compatibility with Greg Whalin's memcached client.</li><li>{@code WHALINV1}: Handles old whalin encoding: data type is in the first byte of the value.</li></ul>
-# cas.monitor.memcached.transcoder: KRYO
+# cas.monitor.memcached.transcoder: true
 
 # Required: false
 # Type: java.lang.Integer
@@ -44910,13 +44827,6 @@ SSLHostConfig then this attribute is required and each Certificate must have a u
 # cas.server.tomcat.http.protocol: org.apache.coyote.http11.Http11NioProtocol
 
 # Required: false
-# Type: java.lang.Integer
-# Owner: org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatHttpProperties
-# Module: cas-server-webapp-tomcat
-# If this Connector is supporting non-SSL requests, this will automatically redirect the request to the port number specified here. Matching security constraints that require SSL transport will be auto-defined.
-# cas.server.tomcat.http.redirect-port: 0
-
-# Required: false
 # Type: java.lang.String
 # Owner: org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatRemoteAddressProperties
 # Module: cas-server-webapp-tomcat
@@ -45501,6 +45411,13 @@ Available values are as follows:
 # Module: cas-server-support-couchbase-service-registry
 # Maximum number of parallel threads made for queries.
 # cas.service-registry.couchbase.max-parallelism: 0
+
+# Required: false
+# Type: java.lang.String
+# Owner: org.apereo.cas.configuration.model.support.couchbase.serviceregistry.CouchbaseServiceRegistryProperties
+# Module: cas-server-support-couchbase-service-registry
+# String representation of query threshold.
+# cas.service-registry.couchbase.query-threshold: PT30S
 
 # Required: false
 # Type: java.lang.String
@@ -46155,7 +46072,7 @@ Available values are as follows:
 # Hostname verification options.
 Available values are as follows:
 <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code ANY}: Skip hostname verification and allow all.</li></ul>
-# cas.service-registry.ldap.hostname-verifier: DEFAULT
+# cas.service-registry.ldap.hostname-verifier: true
 
 # Required: false
 # Type: java.lang.String
@@ -47013,7 +46930,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.service-registry.redis.read-from: 
+# cas.service-registry.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -47944,7 +47861,7 @@ that contains all service definition files locally, and will stream changes
 to other CAS passive nodes. Passive CAS nodes only access the replication
 cache to retrieve services, and will not individually keep copies of the
 service definition files on disk.</li></ul>
-# cas.service-registry.stream.replication-mode: ACTIVE_PASSIVE
+# cas.service-registry.stream.replication-mode: true
 
 # Required: true
 # Type: org.springframework.core.io.Resource
@@ -49884,6 +49801,13 @@ which is not applicable with this mode.</li></ul>
 # Module: cas-server-support-couchbase-ticket-registry
 # Maximum number of parallel threads made for queries.
 # cas.ticket.registry.couchbase.max-parallelism: 0
+
+# Required: false
+# Type: java.lang.String
+# Owner: org.apereo.cas.configuration.model.support.couchbase.ticketregistry.CouchbaseTicketRegistryProperties
+# Module: cas-server-support-couchbase-ticket-registry
+# String representation of query threshold.
+# cas.ticket.registry.couchbase.query-threshold: PT30S
 
 # Required: false
 # Type: java.lang.String
@@ -52207,7 +52131,7 @@ Available values are as follows:
 <ul><li>{@code KRYO}: CAS transcoder implementation based on Kryo fast serialization framework
 suited for efficient serialization of tickets. Provides pooling mechanisms
 as well as control over object registration and sequences.</li><li>{@code SERIAL}: Kryp native transcoder that serializes and compresses objects.</li><li>{@code WHALIN}: Transcoder that provides compatibility with Greg Whalin's memcached client.</li><li>{@code WHALINV1}: Handles old whalin encoding: data type is in the first byte of the value.</li></ul>
-# cas.ticket.registry.memcached.transcoder: KRYO
+# cas.ticket.registry.memcached.transcoder: true
 
 # Required: false
 # Type: java.lang.Integer
@@ -52693,7 +52617,7 @@ Accepted values are: {@code MASTER, SLAVE}.
 # Setting that describes how Lettuce routes read operations to replica nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported) in the Lettuce redis client dependency so migrate config to UPSTREAM/REPLICA.
 Available values are as follows:
 <ul><li>{@code UPSTREAM}: Read from the current upstream node.</li><li>{@code UPSTREAMPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code MASTER}: Read from the current upstream node.</li><li>{@code MASTERPREFERRED}: Read from the upstream node, but if it is unavailable, read from replica nodes.</li><li>{@code SLAVE}: Read from replica nodes.</li><li>{@code SLAVEPREFERRED}:  Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code REPLICA}: Read from replica nodes.</li><li>{@code REPLICAPREFERRED}: Read from the replica nodes, but if none is unavailable, read from the upstream node.</li><li>{@code ANY}: Read from any node of the cluster.</li><li>{@code ANYREPLICA}: Read from any replica node of the cluster.</li><li>{@code NEAREST}: Read from the nearest node.</li></ul>
-# cas.ticket.registry.redis.read-from: 
+# cas.ticket.registry.redis.read-from: PT10S
 
 # Required: true
 # Type: java.lang.String
@@ -52849,13 +52773,6 @@ Available values are as follows:
 # cas.ticket.tgt.timeout.max-time-to-live-in-seconds: 0
 
 # Required: false
-# Type: java.lang.Integer
-# Owner: org.apereo.cas.configuration.model.core.ticket.TransientSessionTicketProperties
-# Module: cas-server-core-tickets
-# Controls number of times a ticket can be used within CAS server.
-# cas.ticket.tst.number-of-uses: 1
-
-# Required: false
 # Type: java.lang.Long
 # Owner: org.apereo.cas.configuration.model.core.ticket.TransientSessionTicketProperties
 # Module: cas-server-core-tickets
@@ -52921,7 +52838,7 @@ Available values are as follows:
 # Owner: org.apereo.cas.configuration.model.core.web.view.Cas20ViewProperties
 # Module: cas-server-core-web
 # Whether v2 protocol support should be forward compatible to act like v3 and match its response, mainly for attribute release.
-# cas.view.cas2.v3-forward-compatible: true
+# cas.view.cas2.v3-forward-compatible: false
 
 # Required: false
 # Type: org.apereo.cas.configuration.model.core.web.view.Cas30ViewProperties$ValidationAttributesRendererTypes

@@ -29,7 +29,8 @@ buildscript {
         classpath "io.freefair.gradle:lombok-plugin:${project.gradleFreeFairPluginVersion}"
         classpath "io.spring.gradle:dependency-management-plugin:${project.gradleDependencyManagementPluginVersion}"
         classpath "gradle.plugin.com.google.cloud.tools:jib-gradle-plugin:${project.jibVersion}"
-
+	classpath "org.apereo.cas:cas-server-support-ldap:${project.'cas.version'}" 
+	classpath "org.apereo.cas:cas-server-support-oauth-webflow:${project.'cas.version'}" 
         classpath "de.undercouch:gradle-download-task:${project.gradleDownloadTaskVersion}"
         classpath "org.apache.ivy:ivy:${project.ivyVersion}"
         classpath "org.apereo.cas:cas-server-core-api-configuration-model:${project.'cas.version'}"
@@ -49,6 +50,7 @@ repositories {
     }
     mavenLocal()
     mavenCentral()
+    jcenter()
     maven { url 'https://oss.sonatype.org/content/repositories/releases' }
     maven {
         url 'https://oss.sonatype.org/content/repositories/snapshots'
@@ -95,7 +97,7 @@ task run(group: "build", description: "Run the CAS web application in embedded c
         javaexec {
             main = "-jar"
             jvmArgs = casRunArgs
-            args = ["build/libs/cas.war"]
+            args = ["build/libs/app.war"]
             systemProperties = System.properties
             logger.info "Started ${commandLine}"
         }
@@ -130,7 +132,7 @@ task debug(group: "CAS", description: "Debug the CAS web application in embedded
             main = "-jar"
             jvmArgs = casArgs
             debug = true
-            args = ["build/libs/cas.war"]
+            args = ["build/libs/app.war"]
             systemProperties = System.properties
             logger.info "Started ${commandLine}"
         }
@@ -224,7 +226,7 @@ task createKeystore(group: "CAS", description: "Create CAS keystore") {
 
 task unzipWAR(type: Copy, group: "CAS", description: "Explodes the CAS web application archive") {
     dependsOn 'build'
-    from zipTree("build/libs/cas.war")
+    from zipTree("build/libs/app.war")
     into "${buildDir}/app"
     doLast {
         println "Unzipped WAR into ${buildDir}/app"
@@ -517,8 +519,8 @@ bootWar {
         logger.info "WAR artifact is not marked as an executable"
     }
 
-    archiveName "cas.war"
-    baseName "cas"
+    archiveName "app.war"
+    baseName "app"
 
     entryCompression = ZipEntryCompression.STORED
 
