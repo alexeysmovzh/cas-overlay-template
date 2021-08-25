@@ -1,0 +1,21 @@
+{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId": "https://nextcloud-initial.west/.+",
+  "name": "nextcloud-initial",
+  "id": 10,
+  "redirectUrl": "https://nextcloud-initial.west",
+  "logoutUrl": "https://cas.west",
+  "clientSecret": "BsaPey0b4OM3KhUpcQPLfTp0uEkuhxz9wyhf",
+  "clientId": "PdEDjodxTDoCeh027vAc0izSZ2dgTthcb3uS",
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled": true,
+    "ssoEnabled": true,
+    "caseInsensitive": true,
+    "endpointUrl": "https://nextcloud-initial.west",
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "unit" : [ "java.util.HashSet", [ "initial" ] ]
+    }
+  }
+}

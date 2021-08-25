@@ -1,0 +1,8 @@
+{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId": "https://cas.west:8443/.+",
+  "name": "cas",
+  "id": 1,
+  "redirectUrl": "https://nextcloud-initial.west",
+  "logoutUrl": "https://cas.west"
+}
